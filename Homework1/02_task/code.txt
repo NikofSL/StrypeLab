@@ -1,0 +1,42 @@
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (checkBMInt->Checked)
+		{
+			try
+			{
+				this->labelBMI->Text = bmiCalculation(2.5, 1.3);
+			}
+			catch (const std::exception&)
+			{
+
+			}
+		}
+		else
+		{
+
+			try
+			{
+				this->labelBMI->Text = bmiCalculation(2, 1);
+			}
+			catch (const std::exception&)
+			{
+
+			}
+		}
+	}
+
+		   String^ bmiCalculation(double bmiPow, double bmiNew) {
+			   String^ numberAsWeight = this->textWeight->Text->ToString();
+			   String^ numberAsHeight = this->textHeight->Text->ToString();
+
+			   std::string converted_Weight = msclr::interop::marshal_as< std::string >(numberAsWeight);
+			   std::string converted_Height = msclr::interop::marshal_as< std::string >(numberAsHeight);
+
+			   double doubleWeight = std::stod(converted_Weight);
+			   ////		1.8^2.5 = 4.34
+			   double doubleHeight = std::stod(converted_Height);
+			   doubleHeight = pow((std::trunc(doubleHeight * 100.0) / 100.0), bmiPow);
+			   double bmi = doubleWeight / doubleHeight;
+			   bmi = bmi * bmiNew;
+			   String^ bmiOutput = (std::trunc(bmi * 100.0) / 100.0).ToString();
+			   return bmiOutput;
+		   }
