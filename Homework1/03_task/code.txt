@@ -1,0 +1,73 @@
+#pragma once
+#define _USE_MATH_DEFINES
+
+#include <string>
+#include <msclr/marshal_cppstd.h>
+#include <iomanip>
+#include <iostream>
+#include <cmath>
+
+// Function to calculate the segment area of a circle given radius and water height
+double calculate_segment_area(double radius, double water_height) {
+	if (water_height >= radius * 2) {
+		// If water height is greater than or equal to the diameter, it is fully filled
+		return M_PI * radius * radius;
+	}
+	else if (water_height <= 0) {
+		// If water height is zero or negative, there's no water
+		return 0.0;
+	}
+	else {
+		double theta = 2 * acos(1 - water_height / radius);
+		return 0.5 * radius * radius * (theta - sin(theta));
+	}
+}
+
+// Function to calculate the volume of water in a horizontal cylinder
+double calculate_horizontal_cylinder_volume(double radius, double length, double water_height) {
+	double segment_area = calculate_segment_area(radius, water_height);
+	return length * segment_area;
+}
+
+
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		try
+		{
+			if (this->radioButton1->Checked)
+			{
+				String^ numberAsWeight = this->textBox1->Text->ToString();
+				String^ numberAsHeight = this->textBox3->Text->ToString();
+
+				std::string converted_Weight = msclr::interop::marshal_as< std::string >(numberAsWeight);
+				std::string converted_Height = msclr::interop::marshal_as< std::string >(numberAsHeight);
+
+				double doubleWeight = std::stod(converted_Weight);
+				double doubleHeight = std::stod(converted_Height);
+
+				double bmi = M_PI * pow(doubleWeight, 2) * doubleHeight;
+				//double bmi = M_PI * (doubleWeight * 2) * doubleHeight;
+				String^ bmiOutput = (std::trunc(bmi * 100.0) / 100.0).ToString();
+				this->label4->Text = bmiOutput + " m3";
+			}
+			else
+			{
+				String^ numberAsRadius = this->textBox1->Text->ToString();
+				String^ numberAsLength = this->textBox2->Text->ToString();
+				String^ numberAsWater_height = this->textBox3->Text->ToString();
+
+				std::string converted_Radius = msclr::interop::marshal_as< std::string >(numberAsRadius);
+				std::string converted_Length = msclr::interop::marshal_as< std::string >(numberAsLength);
+				std::string converted_Water_height = msclr::interop::marshal_as< std::string >(numberAsWater_height);
+
+				double doubleRadius = std::stod(converted_Radius);
+				double doubleLength = std::stod(converted_Length);
+				double doubleWater_height = std::stod(converted_Water_height);
+
+				double volume = calculate_horizontal_cylinder_volume(doubleRadius, doubleLength, doubleWater_height);
+				this->label4->Text = volume + " m3";
+			}
+		}
+		catch (const std::exception&)
+		{
+
+		}
