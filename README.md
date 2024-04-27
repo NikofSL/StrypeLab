@@ -1,1 +1,1 @@
-# StrypeLab
+# StrypesLab
