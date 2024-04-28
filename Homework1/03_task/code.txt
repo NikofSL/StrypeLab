@@ -44,10 +44,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				double doubleWeight = std::stod(converted_Weight);
 				double doubleHeight = std::stod(converted_Height);
 
-				double bmi = M_PI * pow(doubleWeight, 2) * doubleHeight;
+				double volume = M_PI * pow(doubleWeight, 2) * doubleHeight;
 				//double bmi = M_PI * (doubleWeight * 2) * doubleHeight;
-				String^ bmiOutput = (std::trunc(bmi * 100.0) / 100.0).ToString();
-				this->label4->Text = bmiOutput + " m3";
+				String^ volumeOutput = (std::trunc(volume * 100.0) / 100.0).ToString();
+				this->label4->Text = volumeOutput + " m3";
 			}
 			else
 			{
