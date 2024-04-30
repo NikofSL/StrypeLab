@@ -21,6 +21,6 @@ $(TARGET): $(OBJECTS)
 %.o: %.cpp
         $(CXX) $(CXXFLAGS) -c $< -o $@
 
-
+.PHONY: clean
 clean:
         rm -f $(OBJECTS) $(TARGET)
