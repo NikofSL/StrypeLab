@@ -174,6 +174,11 @@ The following are some examples in single-precision format:
    |0|1 * 2<sup>-128</sup>|0000 0000 0000 0000 0000 0000 0000 0000|0x00000000|
 
 
+
+# Optimizing your code
+
+By optimizing an executable, you can achieve a balance between fast execution speed and small code size. This topic discusses some of the mechanisms that Visual Studio provides to help you optimize code.
+
 ### The optimize pragma
 
 If an optimized section of code causes errors or a slowdown, you can use the optimize pragma to turn off optimization for that section.
@@ -193,3 +198,7 @@ You might notice additional warning messages when you compile your code with opt
 Paradoxically, optimizing a program for speed could cause code to run slower. This is because some optimizations for speed increase code size. For example, inlining functions eliminates the overhead of function calls. However, inlining too much code might make your program so large that the number of virtual-memory page faults increases. Therefore, the speed gained from eliminating function calls may be lost to memory swapping.
 
 The following topics discuss good programming practices.
+## See also
+
+[C/C++ Building Reference]([reference/c-cpp-building-reference.md](https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/build/optimizing-your-code.md))
+
