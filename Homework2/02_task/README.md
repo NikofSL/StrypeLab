@@ -176,7 +176,7 @@ The following are some examples in single-precision format:
 
 ### The optimize pragma
 
-If an optimized section of code causes errors or a slowdown, you can use the [optimize](../preprocessor/optimize.md) pragma to turn off optimization for that section.
+If an optimized section of code causes errors or a slowdown, you can use the optimize pragma to turn off optimization for that section.
 
 Enclose the code between two pragmas, as shown here:
 
