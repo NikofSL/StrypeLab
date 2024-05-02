@@ -200,5 +200,5 @@ Paradoxically, optimizing a program for speed could cause code to run slower. Th
 The following topics discuss good programming practices.
 ## See also
 
-[C/C++ Building Reference](https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/build/optimizing-your-code.md)
+[Optimizing your code](https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/build/optimizing-your-code.md)
 
