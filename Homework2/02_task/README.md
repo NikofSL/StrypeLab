@@ -174,6 +174,22 @@ The following are some examples in single-precision format:
    |0|1 * 2<sup>-128</sup>|0000 0000 0000 0000 0000 0000 0000 0000|0x00000000|
 
 
-## See also
+### The optimize pragma
 
-[Optimizing Your Code](optimizing-your-code.md)
+If an optimized section of code causes errors or a slowdown, you can use the [optimize](../preprocessor/optimize.md) pragma to turn off optimization for that section.
+
+Enclose the code between two pragmas, as shown here:
+
+```cpp
+#pragma optimize("", off)
+// some code here
+#pragma optimize("", on)
+```
+
+## Programming practices
+
+You might notice additional warning messages when you compile your code with optimization. This behavior is expected because some warnings relate only to optimized code. You can avoid many optimization problems if you heed these warnings.
+
+Paradoxically, optimizing a program for speed could cause code to run slower. This is because some optimizations for speed increase code size. For example, inlining functions eliminates the overhead of function calls. However, inlining too much code might make your program so large that the number of virtual-memory page faults increases. Therefore, the speed gained from eliminating function calls may be lost to memory swapping.
+
+The following topics discuss good programming practices.
