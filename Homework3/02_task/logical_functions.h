@@ -9,5 +9,6 @@ int synthesizeByZeros(int a, int b, int c) {
 
 
 int minimizedExpression(int a, int b, int c) {
-    return ((!a && b) || (b && c) || (a && b && c) || (!a && !b && !c)) ? 1 : 0;
+//    return ((!a && b) || (b && c) || (a && b && c) || (!a && !b && !c)) ? 1 : 0;
+  return ((!a && !c) || (b && c)) ? 1 : 0;  
 }
